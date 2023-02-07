@@ -1,0 +1,27 @@
+{
+    "workbench.startupEditor": "none",
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": false,
+    "editor.find.seedSearchStringFromSelection": "never",
+    "workbench.tree.renderIndentGuides": "always",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.guides.indentation": false,
+    "editor.autoClosingQuotes": "beforeWhitespace",
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+    "workbench.preferredHighContrastLightColorTheme": "Visual Studio Dark",
+    "workbench.preferredHighContrastColorTheme": "Default Dark+",
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Default Dark+",
+    "editor.wordWrap": "on",
+    "python.formatting.autopep8Path": "/Users/evnelson2021/Library/Python/3.9/bin/autopep8",
+    "python.linting.pylintEnabled": true,
+    "python.analysis.diagnosticSeverityOverrides": {
+    "reportGeneralTypeIssues": "none"
+    },
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django",
+        "--django-settings-module=levelup.settings",
+    ],
+    "files.autoSave": "afterDelay"
+}
+
