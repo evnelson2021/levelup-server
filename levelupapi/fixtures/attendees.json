@@ -1,0 +1,26 @@
+[
+    {
+        "model": "levelupapi.attendee",
+        "pk": 1,
+        "fields": {
+            "event_id": 1,
+            "gamer_id": 1
+        }
+    },
+    {
+        "model": "levelupapi.attendee",
+        "pk": 2,
+        "fields": {
+            "event_id": 2,
+            "gamer_id": 2
+        }
+    },
+    {
+        "model": "levelupapi.attendee",
+        "pk": 3,
+        "fields": {
+            "event_id": 3,
+            "gamer_id": 1
+        }
+    }
+]

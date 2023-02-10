@@ -3,7 +3,7 @@
         "model": "levelupapi.event",
         "pk": 1,
         "fields": {
-            "gamer": 1,
+            "organizing_gamer": 1,
             "game": 1,
             "location": "123 Front Street",
             "date": "2023-02-28",
@@ -16,7 +16,7 @@
         "model": "levelupapi.event",
         "pk": 2,
         "fields": {
-            "gamer": 1,
+            "organizing_gamer": 2,
             "game": 2,
             "location": "456 Back Street",
             "date": "2023-03-05",
@@ -29,7 +29,7 @@
         "model": "levelupapi.event",
         "pk": 3,
         "fields": {
-            "gamer": 1,
+            "organizing_gamer": 1,
             "game": 3,
             "location": "789 Side Street",
             "date": "2023-02-27",
