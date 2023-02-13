@@ -14,4 +14,4 @@ class Event(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     details = models.CharField(max_length=350)
-    # attendees = models.ForeignKey("Attendee", on_delete=models.CASCADE)
+    attendees = models.ManyToManyField("Gamer", through="attendee", related_name="attendees")
