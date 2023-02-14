@@ -1,0 +1,41 @@
+[
+    {
+        "model": "levelupapi.game",
+        "pk": 1,
+        "fields": {
+            "type": 1,
+            "gamer": 1,
+            "name": "Sequence",
+            "length": 2,
+            "min_age": 8,
+            "min_players": 2,
+            "max_players": 6
+        }
+    },
+    {
+        "model": "levelupapi.game",
+        "pk": 2,
+        "fields": {
+            "type": 2,
+            "gamer": 1,
+            "name": "Dungeons & Dragons",
+            "length": 6,
+            "min_age": 12,
+            "min_players": 2,
+            "max_players": 20
+        }
+    },
+    {
+        "model": "levelupapi.game",
+        "pk": 3,
+        "fields": {
+            "type": 3,
+            "gamer": 1,
+            "name": "RuneScape",
+            "length": 4.5,
+            "min_age": 8,
+            "min_players": 2,
+            "max_players": 6
+        }
+    }
+]

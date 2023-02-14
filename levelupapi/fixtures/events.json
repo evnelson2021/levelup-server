@@ -1,0 +1,41 @@
+[
+    {
+        "model": "levelupapi.event",
+        "pk": 1,
+        "fields": {
+            "organizing_gamer": 1,
+            "game": 1,
+            "location": "123 Front Street",
+            "date": "2023-02-28",
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "details": "We will be meeting at my house to play Sequence at the end of the month. I have 3 boards and can host up to 18 people."
+        }
+    },
+    {
+        "model": "levelupapi.event",
+        "pk": 2,
+        "fields": {
+            "organizing_gamer": 2,
+            "game": 2,
+            "location": "456 Back Street",
+            "date": "2023-03-05",
+            "start_time": "15:00",
+            "end_time": "22:00",
+            "details": "It's time for our yearly March (DND) Madness! Join us for hours of adventure"
+        }
+    },
+    {
+        "model": "levelupapi.event",
+        "pk": 3,
+        "fields": {
+            "organizing_gamer": 1,
+            "game": 3,
+            "location": "789 Side Street",
+            "date": "2023-02-27",
+            "start_time": "10:00",
+            "end_time": "14:00",
+            "details": "RuneScape. That is all. Be there."
+        }
+    }
+]
