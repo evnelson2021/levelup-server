@@ -52,12 +52,34 @@ class GameView(ViewSet):
         serializer = GameSerializer(game)
         return Response(serializer.data)
 
+    def update(self, request, pk):
+        """Handle PUT requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        game = Game.objects.get(pk=pk)
+        game.name = request.data["name"]
+        game.length=request.data["length"]
+        game.min_age=request.data["min_age"]
+        game.min_players=request.data["min_players"]
+        game.max_players=request.data["max_players"]
+
+        type = GameType.objects.get(pk=request.data["type"])
+        game.type = type
+        game.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+
 class GameCreatorSerializer(serializers.ModelSerializer):
     """JSON serializer for attendees
     """
     class Meta:
         model = Gamer
         fields = ('full_name',)
+
 
 class GameTypeSerializer(serializers.ModelSerializer):
     """JSON serializer for attendees
@@ -66,10 +88,13 @@ class GameTypeSerializer(serializers.ModelSerializer):
         model = GameType
         fields = ('label',)
 
+
 class GameSerializer(serializers.ModelSerializer):
     """JSON serializer for games"""
     gamer = GameCreatorSerializer()
     type = GameTypeSerializer()
+
     class Meta:
         model = Game
-        fields = ('id', 'type', 'gamer', 'name', 'length', 'min_age', 'min_players', 'max_players', )
+        fields = ('id', 'type', 'gamer', 'name', 'length',
+                  'min_age', 'min_players', 'max_players', )
