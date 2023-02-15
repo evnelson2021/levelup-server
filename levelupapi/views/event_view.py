@@ -74,12 +74,23 @@ class EventView(ViewSet):
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
+    def destroy(self, request, pk):
+        """Handle DELETE requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        
+        event = Event.objects.get(pk=pk)
+        event.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
 class EventGameSerializer(serializers.ModelSerializer):
     """JSON serializer for organizers
     """
     class Meta:
         model = Game
-        fields = ('name',)
+        fields = ('id', 'name',)
 
 class OrganizerSerializer(serializers.ModelSerializer):
     """JSON serializer for organizers
