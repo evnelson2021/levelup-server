@@ -97,7 +97,7 @@ class GameTypeSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = GameType
-        fields = ('label',)
+        fields = ('id', 'label',)
 
 
 class GameSerializer(serializers.ModelSerializer):
