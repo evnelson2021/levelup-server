@@ -15,3 +15,11 @@ class Event(models.Model):
     end_time = models.TimeField()
     details = models.CharField(max_length=350)
     attendees = models.ManyToManyField("Gamer", through="attendee", related_name="attendees")
+
+    @property
+    def joined(self):
+        return self.__joined
+
+    @joined.setter
+    def joined(self, value):
+        self.__joined = value
