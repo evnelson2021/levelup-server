@@ -58,15 +58,13 @@ class EventTests(APITestCase):
 
         # Seed the database with a game
         event = Event()
-        game = Game(pk=2)
-        event.game = game
+        event.game = Game(pk=2)
         event.location = "123 Front Street"
         event.date = "2024-01-01"
         event.start_time = "16:00"
         event.end_time = "20:00"
         event.details = "Let's kick off 2024 with some fun"
-        organizing_gamer = Gamer(pk=1)
-        event.organizing_gamer = organizing_gamer
+        event.organizing_gamer = Gamer(pk=1)
 
         event.save()
 
@@ -93,15 +91,13 @@ class EventTests(APITestCase):
         Ensure we can change an existing event.
         """
         event = Event()
-        game = Game(pk=2)
-        event.game = game
+        event.game = Game(pk=2)
         event.location = "123 Front Street"
         event.date = "2024-01-01"
         event.start_time = "16:00"
         event.end_time = "20:00"
         event.details = "Let's kick off 2024 with some fun"
-        organizing_gamer = Gamer(pk=1)
-        event.organizing_gamer = organizing_gamer
+        event.organizing_gamer = Gamer(pk=1)
         event.save()
 
         # DEFINE NEW PROPERTIES FOR EVENT
@@ -136,15 +132,61 @@ class EventTests(APITestCase):
         Ensure we can delete an existing event.
         """
         event = Event()
-        game = Game(pk=3)
-        event.game = game
+        event.game = Game(pk=3)
         event.location = "456 Back Street"
         event.date = "2023-12-31"
         event.start_time = "22:00"
         event.end_time = "01:00"
         event.details = "New Year's Eve games! Let's go!"
-        organizing_gamer = Gamer(pk=1)
-        event.organizing_gamer = organizing_gamer
+        event.organizing_gamer = Gamer(pk=1)
+        event.save()
+
+        # DELETE the event you just created
+        response = self.client.delete(f"/events/{event.id}")
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        # GET the event again to verify you get a 404 response
+        response = self.client.get(f"/events/{event.id}")
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+
+
+    def test_delete_event_attendee(self):
+        """
+        Ensure we can delete an existing attendee from an event (leave).
+        """
+        event = Event()
+        event.game = Game(pk=3)
+        event.location = "456 Back Street"
+        event.date = "2023-12-31"
+        event.start_time = "22:00"
+        event.end_time = "01:00"
+        event.details = "New Year's Eve games! Let's go!"
+        event.organizing_gamer = Gamer(pk=1)
+        event.save()
+
+        # DELETE the event you just created
+        response = self.client.delete(f"/events/{event.id}")
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        # GET the event again to verify you get a 404 response
+        response = self.client.get(f"/events/{event.id}")
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+
+
+    def test_add_event_attendee(self):
+        """
+        Ensure we can add an existing attendee from an event (join).
+        """
+        event = Event()
+        event.game = Game(pk=3)
+        event.location = "456 Back Street"
+        event.date = "2023-12-31"
+        event.start_time = "22:00"
+        event.end_time = "01:00"
+        event.details = "New Year's Eve games! Let's go!"
+        event.organizing_gamer = Gamer(pk=1)
         event.save()
 
         # DELETE the event you just created

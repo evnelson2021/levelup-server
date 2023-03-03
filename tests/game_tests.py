@@ -136,15 +136,13 @@ class GameTests(APITestCase):
         Ensure we can delete an existing game.
         """
         game = Game()
-        type = GameType(pk=1)
-        game.type = type
+        game.type = GameType(pk=1)
         game.name = "Monopoly 2"
         game.length = 6.5
         game.min_age = 12
         game.min_players = 2
         game.max_players = 8
-        gamer = Gamer(pk=1)
-        game.gamer = gamer
+        game.gamer = Gamer(pk=1)
         game.save()
 
         # DELETE the game you just created
