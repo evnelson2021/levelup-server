@@ -196,3 +196,38 @@ class EventTests(APITestCase):
         # GET the event again to verify you get a 404 response
         response = self.client.get(f"/events/{event.id}")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+
+    def test_signup_leave_event(self):
+        """
+        Ensure we can add/remove an gamer from event attendees using signup and leave custom actions.
+        """
+
+        event = Event()
+        event.game = Game(pk=2)
+        event.location = "789 Side Street"
+        event.date = "2023-12-31"
+        event.start_time = "22:00"
+        event.end_time = "01:00"
+        event.details = "Rival New Year's Eve Party!"
+        event.organizing_gamer = Gamer(pk=2)
+        event.save()
+
+        gamer = 2
+
+        event.attendees.add(gamer)
+
+        # Initiate request and store response
+        response = self.client.post(f"/events/{event.id}/signup")
+
+        # Parse the JSON in the response body
+        json_response = json.loads(response.content)
+
+        # Assert that the attendee was added to event
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(json_response["message"],"Gamer added")
+
+        # DELETE the gamer sign up you just created
+        response = self.client.delete(f"/events/{event.id}/leave")
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
